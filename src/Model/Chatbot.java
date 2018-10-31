@@ -42,15 +42,58 @@ public class Chatbot
 		spookyList.add("What are you dressing up as?");
 	}
 	
-	public String processText(String userText)
+	public static String processText(String userText)
 	{
 		String answer = "";
 		answer += "You said: " + userText;
 		return answer;
 	}
 	
+	if(var == null)
+	{
+		//if null
+	}
+	else
+	{
+		//is not null
+	}
 	
+	public boolean sentimentChecker(String text)
+	{
+		boolean hasSentiment = false;
+		
+		return hasSentiment;
+	}
 	
+	public boolean legitimacyChecker(String input)
+	{
+		boolean isValid = true;
+		
+		if(input == null)
+		{
+			isValid = false;
+		}
+		
+		else if(input.length() < 2)
+		{
+			isValid = false;
+		}
+		else if(input.contains("sdf") || input.contains("jkl"))
+		{
+			isValid = false;
+		}
+		
+		return isValid;	
+	}
 	
+	public double getSentimentRatioFromTexts(ArrayList<String> texts)
+	{
+		double ratio = 0.0;
+	}
+	
+	public boolean spookyChecker()
+	{
+		
+	}
 }
 
