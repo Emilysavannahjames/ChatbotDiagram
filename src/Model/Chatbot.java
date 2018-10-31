@@ -40,6 +40,11 @@ public class Chatbot
 		spookyList.add("Happy Halloween!");
 		spookyList.add("BOO!!!");
 		spookyList.add("What are you dressing up as?");
+		spookyList.add("Spooky!");
+		spookyList.add("Trick or treat");
+		spookyList.add("Have you carved pumpkins yet?");
+		spookyList.add("Zombies!");
+		spookyList.add("Candy! Yum.");
 	}
 	
 	public static String processText(String userText)
@@ -49,7 +54,7 @@ public class Chatbot
 		return answer;
 	}
 	
-	if(var == null)
+	if (var == null)
 	{
 		//if null
 	}
@@ -91,9 +96,16 @@ public class Chatbot
 		double ratio = 0.0;
 	}
 	
-	public boolean spookyChecker()
+	public boolean spookyChecker(String input)
 	{
-		
+		if (input.contains("Halloween") || input.contains("BOO") || input.contains("dressing up") || input.contains("Spooky") || input.contains("trick or treat") || input.contains("carved pumpkins") || input.contains("Zombies") || input.contains("Candy Yum"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 
