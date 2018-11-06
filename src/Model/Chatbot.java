@@ -47,20 +47,11 @@ public class Chatbot
 		spookyList.add("Candy! Yum.");
 	}
 	
-	public static String processText(String userText)
+	public String processText(String userText)
 	{
 		String answer = "";
 		answer += "You said: " + userText;
 		return answer;
-	}
-	
-	if (var == null)
-	{
-		//if null
-	}
-	else
-	{
-		//is not null
 	}
 	
 	public boolean sentimentChecker(String text)
@@ -94,6 +85,7 @@ public class Chatbot
 	public double getSentimentRatioFromTexts(ArrayList<String> texts)
 	{
 		double ratio = 0.0;
+		return ratio;
 	}
 	
 	public boolean spookyChecker(String input)

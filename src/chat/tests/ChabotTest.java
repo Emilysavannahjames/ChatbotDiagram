@@ -2,11 +2,13 @@ package chat.tests;
 
 import static org.junit.Assert.*;
 
+
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import chat.model.Chatbot;
+import Model.Chatbot;
 
 public class ChabotTest
 {
@@ -28,7 +30,7 @@ public class ChabotTest
 	@Test
 	public void testChatbot()
 	{
-		assertNotNull("You need to initialize the content data member", testedBot.getContent() );
+		assertNotNull("You need to initialize the content data member", testedBot.getContent());
 		assertNotNull("ArrayLists need to be initialized too", testedBot.getSpookyList());
 		assertNotNull("ArrayLists need to be initialized too", testedBot.getResponseList());
 		assertNotNull("Current user data member needs to be initialized", testedBot.getCurrentUser());
