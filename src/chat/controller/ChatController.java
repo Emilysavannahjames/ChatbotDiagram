@@ -11,7 +11,7 @@ public class Chatbot
 
 	private Chatbot simpleBot;
 	
-	public ChatController()
+	public Chatbot()
 	{
 		simpleBot = new Chatbot();
 	}
@@ -44,11 +44,6 @@ public class Chatbot
 	{
 		return simpleBot;
 	}
-	
-	
-}
-	
-	
 	
 	
 }
