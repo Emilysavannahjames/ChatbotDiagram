@@ -40,7 +40,7 @@ public class Chatbot
 		answer += "You said: " + userText;
 		return answer;
 	}
-	public Chatbot getChatebot()
+	public Chatbot getChatbot()
 	{
 		return simpleBot;
 	}
