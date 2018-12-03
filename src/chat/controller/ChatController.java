@@ -1,9 +1,8 @@
 package chat.controller;
 
-import Model.Chatbot;
-
-
 import javax.swing.JOptionPane;
+
+import chat.model.Chatbot;
 
 
 public class Chatbot

@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import Model.Chatbot;
+import chat.model.Chatbot;
 
 public class ChabotTest
 {
