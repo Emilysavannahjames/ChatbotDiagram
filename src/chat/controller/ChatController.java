@@ -5,12 +5,12 @@ import javax.swing.JOptionPane;
 import chat.model.Chatbot;
 
 
-public class Chatbot
+public class ChatController
 {
 
 	private Chatbot simpleBot;
 	
-	public Chatbot()
+	public ChatController()
 	{
 		simpleBot = new Chatbot();
 	}
