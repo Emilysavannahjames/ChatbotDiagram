@@ -47,39 +47,39 @@ public class Chatbot
 		spookyList.add("Candy! Yum.");
 	}
 	
+	public String interactWithChatbot(String text)
+	{
+		String output = "";
+		output += simpleBot.processText(text);
+		return output;
+	}
+	
 	public String processText(String userText)
 	{
 		String answer = "";
-		answer += "You said: " + userText;
+		
+		if(!sentimentChecker(userText))
+		{
+			answer += "You said: " + userText + "\n";
+		}
+		else
+		{
+			answer += "You said the special words. \n";
+		}
+		
 		return answer;
 	}
 	
-	public boolean sentimentChecker(String text)
+	public boolean setimentChecker(String text)
 	{
-		boolean hasSentiment = false;
+		boolean isValid = false;
 		
-		return hasSentiment;
-	}
-	
-	public boolean legitimacyChecker(String input)
-	{
-		boolean isValid = true;
-		
-		if(input == null)
+		if(text!= null && text.length() > 3)
 		{
-			isValid = false;
+			isValid = true;
 		}
 		
-		else if(input.length() < 2)
-		{
-			isValid = false;
-		}
-		else if(input.contains("sdf") || input.contains("jkl"))
-		{
-			isValid = false;
-		}
-		
-		return isValid;	
+		return isValid;
 	}
 	
 	public double getSentimentRatioFromTexts(ArrayList<String> texts)

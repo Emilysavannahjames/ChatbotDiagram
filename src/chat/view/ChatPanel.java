@@ -5,6 +5,7 @@ import chat.controller.ChatController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 
 public class ChatPanel extends JPanel
 {
@@ -24,7 +25,7 @@ public class ChatPanel extends JPanel
 	{
 		super(); //first line of code is super();
 		
-		this.appController = app;
+		this.ChatController = app;
 		appLayout = new SpringLayout();
 		
 		firstLabel = new JLabel("Words in a line.");
@@ -32,9 +33,25 @@ public class ChatPanel extends JPanel
 		loadButton = new JButton("Load");
 		chatButton = new JButton("Chat");
 		checkerButton = new JButton("Check Text");
-		
 		chatField = new JTextField("Talk to the Chatbot here", 50);
-		chatArea = new JTextArea("Chat Area", 20, 50);
+		chatPane = new JScrollPane();
+		
+		appLayout.putConstraint(SpringLayout.WEST, saveButton, 11, SpringLayout.EAST, loadButton);
+		
+		appLayout.putConstraint(SpringLayout.NORTH, saveButton, 0, SpringLayout.NORTH, chatButton);
+		appLayout.putConstraint(SpringLayout.WEST, chatButton, 145, SpringLayout.WEST, this);
+		appLayout.putConstraint(SpringLayout.NORTH, loadButton, 0, SpringLayout.NORTH, chatButton);
+		appLayout.putConstraint(SpringLayout.WEST, loadButton, 17, SpringLayout.EAST, chatButton);
+		
+		appLayout.putConstraint(SpringLayout.NORTH, checkerButton, 0, SpringLayout.NORTH, saveButton);
+		appLayout.putConstraint(SpringLayout.WEST, checkerButton, 6, SpringLayout.EAST, saveButton);
+		
+		
+		appLayout.putConstraint(SpringLayout.WEST, chatField, 0, SpringLayout.WEST, this);
+		appLayout.putConstraint(SpringLayout.EAST, chatField, 0, SpringLayout.EAST, this);
+		appLayout.putConstraint(SpringLayout.NORTH, chatButton, 60, SpringLayout.SOUTH, chatField);
+		
+		
 		
 		setupScrollPane();
 		setupPanel();
@@ -48,8 +65,6 @@ public class ChatPanel extends JPanel
 		chatArea.setEditable(false);
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
-		
-		chatPane.setViewportView(chatArea);
 		chatPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		chatPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 	}
@@ -66,24 +81,44 @@ public class ChatPanel extends JPanel
 		this.add(chatField);
 		this.add(checkerButton);
 		this.add(loadButton);
+		chatArea = new JTextArea("Chat Area", 20, 50);
+		appLayout.putConstraint(SpringLayout.NORTH, chatField, 24, SpringLayout.SOUTH, chatArea);
+		appLayout.putConstraint(SpringLayout.NORTH, chatArea, 20, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.WEST, chatArea, 93, SpringLayout.WEST, this);
+		add(chatArea);
 	}
 	
 	private void setupLayout()
 	{
-		appLayout.putConstraint(SpringLayout.NORTH, firstLabel, 70, SpringLayout.NORTH, this); 
-		appLayout.putConstraint(SpringLayout.EAST, firstLabel, -90, SpringLayout.EAST, this); 
-		appLayout.putConstraint(SpringLayout.WEST, firstLabel, 175, SpringLayout.WEST, this); 
-		appLayout.putConstraint(SpringLayout.SOUTH, firstLabel, -135, SpringLayout.SOUTH, this); 
+		appLayout.putConstraint(SpringLayout.WEST, saveButton, 11, SpringLayout.EAST, loadButton);
+		
+		appLayout.putConstraint(SpringLayout.NORTH, saveButton, 0, SpringLayout.NORTH, chatButton);
+		appLayout.putConstraint(SpringLayout.WEST, chatButton, 145, SpringLayout.WEST, this);
+		appLayout.putConstraint(SpringLayout.NORTH, loadButton, 0, SpringLayout.NORTH, chatButton);
+		appLayout.putConstraint(SpringLayout.WEST, loadButton, 17, SpringLayout.EAST, chatButton);
+		
+		appLayout.putConstraint(SpringLayout.NORTH, checkerButton, 0, SpringLayout.NORTH, saveButton);
+		appLayout.putConstraint(SpringLayout.WEST, checkerButton, 6, SpringLayout.EAST, saveButton);
+		
+		
+		appLayout.putConstraint(SpringLayout.WEST, chatField, 0, SpringLayout.WEST, this);
+		appLayout.putConstraint(SpringLayout.EAST, chatField, 0, SpringLayout.EAST, this);
+		appLayout.putConstraint(SpringLayout.NORTH, chatButton, 60, SpringLayout.SOUTH, chatField);
 	}
 	
 	private void setupListeners()
 	{
-		saveButton.addActionListener(new ActionListener()
-				{
-					public void actionPerformed(ActionEvent mouseClick)
-					{
-						changeBackground();
-					}
-				});
+		chatButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String input = chatField.getText();
+				String output = "";
+				output = appController.interactWithChatbot(input);
+				chatArea.append(output);
+				chatField.setText(" ");
+				chatArea.setCaretPosition(chatArea.getDocument().getLength());
+			}
+		});
 	}
 }
