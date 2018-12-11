@@ -25,7 +25,7 @@ public class ChatPanel extends JPanel
 	{
 		super(); //first line of code is super();
 		
-		this.ChatController = app;
+		this.appController = appController;
 		appLayout = new SpringLayout();
 		
 		firstLabel = new JLabel("Words in a line.");
@@ -121,4 +121,6 @@ public class ChatPanel extends JPanel
 			}
 		});
 	}
+	
+	
 }
