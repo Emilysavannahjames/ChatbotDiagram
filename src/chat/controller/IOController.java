@@ -42,4 +42,34 @@ public class IOController
 			app.handleErrors(genericError);
 		}
 	}
+	
+	public static  String loadFile(ChatController app, String path)
+	
+	{
+		String contents = "";
+		try
+		{
+			File saveFile = new File(path);
+			Scanner fileScanner;
+			if(saveFile.exists())
+			{
+				fileScanner = Scanner(saveFile);
+				while(fileScanner.hasNext())
+				{
+					contents += fileScanner.nextLine() + "\n";
+				}
+			}
+		}
+		
+		catch(IOException error)
+		{
+			app.handleErrors(error);
+		}
+		catch(Exception genericError)
+		{
+			app.handleErrors(genericError);
+		}
+		
+		return contents;
+	}
 }
