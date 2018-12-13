@@ -47,18 +47,13 @@ public class Chatbot
 		spookyList.add("Candy! Yum.");
 	}
 	
-	public String interactWithChatbot(String text)
-	{
-		String output = "";
-		output += simpleBot.processText(text);
-		return output;
-	}
+	
 	
 	public String processText(String userText)
 	{
 		String answer = "";
 		
-		if(!sentimentChecker(userText))
+		if(!setimentChecker(userText))
 		{
 			answer += "You said: " + userText + "\n";
 		}

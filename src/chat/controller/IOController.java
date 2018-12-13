@@ -53,7 +53,7 @@ public class IOController
 			Scanner fileScanner;
 			if(saveFile.exists())
 			{
-				fileScanner = Scanner(saveFile);
+				fileScanner = new Scanner(saveFile);
 				while(fileScanner.hasNext())
 				{
 					contents += fileScanner.nextLine() + "\n";
