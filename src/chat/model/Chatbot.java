@@ -51,17 +51,12 @@ public class Chatbot
 	
 	public String processText(String userText)
 	{
-		String answer = "";
+		String answer = "You said: " + userText + "\n";
 		
-		if(!setimentChecker(userText))
-		{
-			answer += "You said: " + userText + "\n";
-		}
-		else
-		{
-			answer += "You said the special words. \n";
-		}
+		int random = (int )(Math.random()*responseList.size());
+		answer += "Chatbot says " + responseList.get(random) + "\n";
 		
+	
 		return answer;
 	}
 	
