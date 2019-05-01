@@ -176,6 +176,25 @@ public class ChatPanel extends JPanel
 					chatArea.setText("Chat saved!");
 				}
 		});
-	}	
 	
-}
+	
+	loadButton.addActionListener(new ActionListener()
+	{
+		public void actionPerformed(ActionEvent tweetClick)
+		{
+			String path = getPath("load");
+			String chatText = IOController.loadFile(appController, path);
+			chatArea.setText(chatText);
+		}
+	});
+	
+	tweetButton.addActionListener(new ActionListener()
+	{
+		public void actionPerformed(ActionEvent tweetClick)
+				{
+					String textToTweet = chatField.getText().trim();
+					appController.tweet(textToTweet);
+				}
+			});
+		}
+	}

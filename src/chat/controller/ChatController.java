@@ -1,25 +1,31 @@
 package chat.controller;
 
 import javax.swing.JOptionPane;
+
 import chat.view.ChatFrame;
-import chat.model.Chatbot;
+import chat.model.*;
+
+
 
 
 public class ChatController
 {
 
 	private Chatbot simpleBot;
+	private ChatTwitter myTwitter;
 	
 	private ChatFrame appFrame;
 	
 	public ChatController()
 	{
 		simpleBot = new Chatbot();
+		myTwitter = new ChatTwitter(this);
 		appFrame = new ChatFrame(this);
 	}
 	
 	public void start()
 	{
+		
 	
 	}
 	private void close()
@@ -47,6 +53,15 @@ public class ChatController
 	public Chatbot getChatbot()
 	{
 		return simpleBot;
+	}
+	public void tweet(String text)
+	{
+		myTwitter.sendTweet(text);
+	}
+	public String findWords(String user)
+	{
+		String results = myTwitter.getMostCommonWord(user);
+		return results;
 	}
 	
 	
